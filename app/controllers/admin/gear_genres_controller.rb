@@ -1,4 +1,4 @@
-class GearGenresController < ApplicationController
+class Admin::GearGenresController < ApplicationController
   def index
   end
 

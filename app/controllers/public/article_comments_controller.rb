@@ -1,19 +1,25 @@
-class ArticleCommentsController < ApplicationController
+class Public::ArticleCommentsController < ApplicationController
   def index
-  end 
-  
+  end
+
   def new
-  end 
-  
+  end
+
   def create
-  end 
-  
+  end
+
   def destroy
-  end 
-  
-  
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+
   private
   def article_comments_params
     params.require(:article_comments).permit(:title, :comment)
-  end 
+  end
 end
