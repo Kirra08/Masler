@@ -1,2 +1,30 @@
-<h1>GearGenres#index</h1>
-<p>Find me in app/views/gear_genres/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <%= form_with model: @gear_genre, url: admin_gear_genres_path, method: :post do |f| %>
+       <%= f.label :使用器具 %>
+       <%= f.text_field :name  %>
+       <%= f.submit "新規投稿" %>
+      <% end %>
+
+      <div class="row my-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <td>テーブル名</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @gear_genres.each do |gear_genre| %>
+              <tr>
+                <td><%= gear_genre.name %></td>
+                <td><%= link_to "ジャンル名編集",edit_admin_gear_genre_path(gear_genre) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

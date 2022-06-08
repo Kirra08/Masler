@@ -1,7 +1,30 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
-      <h1>a</h1>
+      <%= form_with model: @body_part_genre, url: admin_body_part_genres_path, method: :post do |f| %>
+       <%= f.label :トレーニング部位 %>
+       <%= f.text_field :name  %>
+       <%= f.submit "新規投稿" %>
+      <% end %>
+
+      <div class="row my-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <td>テーブル名</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @body_part_genres.each do |body_part_genre| %>
+              <tr>
+                <td><%= body_part_genre.name %></td>
+                <td><%= link_to "ジャンル名編集",edit_admin_body_part_genre_path(body_part_genre) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
