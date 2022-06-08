@@ -12,9 +12,15 @@ class Public::ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
+    @gear_genres = GearGenre.all
+    @body_part_genre = BodyPartGenre.all
   end
 
   def create
+    @article = Article.new(article_params)
+    @article.save
+    redirect_to articles_path
   end
 
   def destroy

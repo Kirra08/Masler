@@ -1,2 +1,11 @@
-<h1>BodyPartGenre#edit</h1>
-<p>Find me in app/views/body_part_genre/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <%= form_with model: @body_part_genre,url: admin_body_part_genre_path, method: :patch do |f| %>
+        <%= f.label :ジャンル名 %>
+        <%= f.text_field :name %>
+        <%= f.submit "ジャンル名更新" %>
+      <% end %>
+    </div>
+  </div>
+</div>
