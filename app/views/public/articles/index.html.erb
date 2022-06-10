@@ -1,2 +1,20 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <h1>sideberrrrrrrrr</h1>
+    </div>
+    <div class="col-lg-8 md-lg-1">
+      <% @articles.each do |article| %>
+        <div class="row">
+          <%= link_to article_path(article)  do %>
+            <%= image_tag article.get_article_image(200, 200) %>
+            <%= article.title %>
+          <% end %>
+          <%= article.text %>
+          <%= article.gear_genre.name %>
+          <%= article.body_part_genre.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
