@@ -5,6 +5,8 @@ class Public::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @article_comment = ArticleComment.new
+    @article_comments = ArticleComment.all
   end
 
   def edit
@@ -18,7 +20,7 @@ class Public::ArticlesController < ApplicationController
     @body_part_genres = BodyPartGenre.all
     @article = Article.find(params[:id])
     @article.update(article_params)
-    redirect_to article_path(params[:id])
+    redirect_to article_path(@article)
   end
 
   def new
@@ -29,7 +31,7 @@ class Public::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save!
+    @article.save
     redirect_to articles_path
   end
 
