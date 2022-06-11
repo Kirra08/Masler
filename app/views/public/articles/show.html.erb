@@ -11,6 +11,28 @@
           <%= @article.gear_genre.name %>
           <%= @article.body_part_genre.name %>
         </div>
+        <div class="row">
+          <%= form_with model: @article_comment, url: article_article_comments_path(@article), method: :post do |f| %>
+            <%= f.label :タイトル %>
+            <%= f.text_field :title %>
+            <%= f.label :本文 %>
+            <%= f.text_area :comment %>
+            <%= f.hidden_field :article_id, :value => @article.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.submit "投稿" %>
+          <% end %>
+        </div>
+        <div class="row">
+          <table class="table">
+            <% @article_comments.each do |comment| %>
+              <tr>
+                <td><%= comment.title %></td>
+                <td><%= comment.comment %></td>
+                <td><%= link_to "編集", edit_article_article_comment_path(@article,comment) %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
     </div>
   </div>
 </div>

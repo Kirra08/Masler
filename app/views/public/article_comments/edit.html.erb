@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <%= form_with model: @article_comment, url: article_article_comments_path(@article) do |f| %>
+        <%= f.label :タイトル %>
+        <%= f.text_field :title %>
+        <%= f.label :本文 %>
+        <%= f.text_area :comment %>
+        <%= f.hidden_field :article_id, :value => @article.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.submit "投稿" %>
+      <% end %>
+      <%= link_to "コメント削除", article_article_comment_path(@article, @article_comment), method: :delete %>
+    </div>
+  </div>
+</div>
