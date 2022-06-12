@@ -15,6 +15,7 @@ class User < ApplicationRecord
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  has_many :calendars, dependent: :destroy
 
   validates :name, length: {in: 5..15}
 

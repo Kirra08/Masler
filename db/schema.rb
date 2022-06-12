@@ -78,7 +78,13 @@ ActiveRecord::Schema.define(version: 2022_06_06_232142) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "calenders", force: :cascade do |t|
+  create_table "calendars", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "article_id"
+    t.integer "set"
+    t.integer "weight"
+    t.integer "rep"
+    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

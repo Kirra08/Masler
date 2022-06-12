@@ -11,7 +11,7 @@
             <%= article.title %>
           <% end %>
           <%= article.text %>
-          <%= article.gear_genre.name %>
+          <i class="<%= article.gear_genre_icon(article.gear_genre.name) %>"></i>
           <%= article.body_part_genre.name %>
            <% if article.favorited_by?(current_user) %>
             <p>
