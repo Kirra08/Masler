@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   belongs_to :gear_genre
   has_many :article_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :calenders
 
   has_one_attached :article_image
 
@@ -22,5 +23,11 @@ class Article < ApplicationRecord
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  def gear_genre_icon(name)
+    if name == "ダンベル"
+      "fas fa-dumbbell"
+    end
   end
 end
