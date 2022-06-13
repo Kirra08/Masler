@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :articles, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :article_comments, only: [:create, :edit, :update, :destroy]
-      resource :favorites, only: [:index, :create, :destroy]
+      resource :favorites, only: [:create, :destroy]
 
     end
     get 'index' => 'favorites#index', as: 'favorite_index'

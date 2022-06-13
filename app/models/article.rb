@@ -28,6 +28,11 @@ class Article < ApplicationRecord
   def gear_genre_icon(name)
     if name == "ダンベル"
       "fas fa-dumbbell"
+    else if name == "バーベル"
+      "fas fa-dumbbell"
+    else name == "自重"
+      "fas fa-user"
+    end
     end
   end
 end

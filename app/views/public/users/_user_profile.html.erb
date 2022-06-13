@@ -1,0 +1,43 @@
+<div class="row profile_header">
+  <div class="col-lg-1">
+    <%= link_to articles_path do %>
+      <i class="fas fa-arrow-left fa-2x mt-3 articles_link"></i>
+    <% end %>
+  </div>
+  <div class="col-lg-7">
+    <div class="row">
+      <h3><%= user.name %></h3>
+    </div>
+    <div class="row ">
+      <%= user.articles.count %>件の投稿
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <% if user == current_user %>
+      <%= link_to edit_user_path(current_user) do %>
+        <div class="profile_link mt-3">　<i class="fas fa-user-cog "></i>　プロフィール編集</div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="row p-2 border-left border-right border-top" style="background-color: #90ee90">
+  <div class="col-lg-5">
+    <%= image_tag user.get_profile_image(290,290) %>
+  </div>
+  <div class="col-lg-7">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="ml-2 mt-2"><%= user.name %></h3>
+      </div>
+    </div>
+    <div class="row m-3 mt-5">
+      <%= user.introduction %>
+    </div>
+    </div>
+</div>
+<div class="row p-2" style="background-color: #90ee90">
+  <div class="col-lg-8">
+    <strong class="ml-4"><%= user.followers.count %></strong>フォロー中
+    <strong class="pl-3"><%= user.followings.count %></strong>フォロワー
+  </div>
+</div>

@@ -1,6 +1,7 @@
 class Public::ArticlesController < ApplicationController
   def index
     @articles = Article.all
+    @user = current_user
   end
 
   def show

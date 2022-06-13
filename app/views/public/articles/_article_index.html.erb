@@ -1,0 +1,36 @@
+<div class="row border p-2">
+  <div class="w-25 h-100" style="text-align : center">
+    <%= link_to article_path(article)  do %>
+      <%= image_tag article.get_article_image(200,150) %>
+    <% end %>
+  </div>
+  <div class="d-flex flex-column bd-highlight mb-3">
+    <div class="p-2 bd-highlight">
+      <h5 class="pl-4"><%= article.title %></h5>
+    </div>
+    <div class="p-2 bd-highlight ml-5 mr-4">
+      <%= article.text %>
+    </div>
+    <div class="mt-5 bd-highlight">
+    <i class=" ml-5 <%= article.gear_genre_icon(article.gear_genre.name) %>"></i>
+    <i class="ml-5"><%= article.body_part_genre.name %></i>
+    <i class="ml-5">
+     <% if article.favorited_by?(current_user) %>
+        <%= link_to article_favorites_path(article), method: :delete do %>
+          <%= article.favorites.count %>:♥
+        <% end %>
+      <% else %>
+        <%= link_to article_favorites_path(article), method: :post do %>
+          <%= article.favorites.count %>:♡
+        <% end %>
+      <% end %>
+    </i>
+    <i class="ml-5">
+      <%= link_to article_path(article) do %>
+        <%= article.article_comments.count %>💬
+      <% end %>
+    </i>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="col-lg-3">
+  <div class="row mt-5">
+    <%= link_to articles_path do %>
+      <h4 class="text-dark sidebar d-flex align-items-center" style="height: 50px">　<i class="fas fa-home"></i><i class="text-secondary">　ホーム　</i></h4>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= link_to user_calendars_path(current_user) do %>
+      <h4 class="text-dark sidebar d-flex align-items-center" style="height: 50px">　<i class="far fa-calendar"></i><i class="text-secondary">　カレンダー　</i></h4>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= link_to favorite_index_path do %>
+      <h4 class="text-dark sidebar d-flex align-items-center" style="height: 50px">　<i class="far fa-heart"></i><i class="text-secondary">　いいね　</i></h4>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= link_to user_path(current_user) do %>
+      <h4 class="text-dark sidebar d-flex align-items-center" style="height: 50px">　<i class="far fa-user"></i><i class="text-secondary">　プロフィール　</i></h4>
+    <% end %>
+  </div>
+</div>
