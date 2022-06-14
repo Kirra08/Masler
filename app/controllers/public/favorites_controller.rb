@@ -14,8 +14,9 @@ class Public::FavoritesController < ApplicationController
   end
 
   def index
-    article = Article.all
-    @articles = article.favorited_by(current_user)
+    @user =   current_user
+    favorites= Favorite.where(user_id: @user.id).pluck(:article_id)
+    @favorite_articles = Article.find(favorites)
   end
 
 end
