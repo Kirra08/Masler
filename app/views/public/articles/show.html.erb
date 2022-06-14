@@ -15,7 +15,9 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <div class="mt-4 mb-3"><%= image_tag @article.article_image2.variant(resize_to_fill: [150, 150]) %></div>
+            <% if @article.article_image2 == nil %>
+              <div class="mt-4 mb-3"><%= image_tag @article.article_image2.variant(resize_to_fill: [150, 150]) %></div>
+            <% end %>
           </div>
           <div class="col-lg-8">
             <div class="mt-4 mb-3 p-3"><%= @article.method2_text %></div>
@@ -24,7 +26,9 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <div class="mt-4 mb-3"><%= image_tag @article.article_image3.variant(resize_to_fill: [150, 150]) %></div>
+            <% if @article.article_image3 == nil %>
+              <div class="mt-4 mb-3"><%= image_tag @article.article_image3.variant(resize_to_fill: [150, 150]) %></div>
+            <% end %>
           </div>
           <div class="col-lg-8">
             <div class="mt-4 mb-3 p-3"><%= @article.method3_text %></div>
@@ -33,7 +37,9 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <div class="mt-4 mb-3"><%= image_tag @article.article_image4.variant(resize_to_fill: [150, 150]) %></div>
+            <% if @article.article_image4 == nil %>
+              <div class="mt-4 mb-3"><%= image_tag @article.article_image4.variant(resize_to_fill: [150, 150]) %></div>
+            <% end %>
           </div>
           <div class="col-lg-8">
             <div class="mt-4 mb-3 p-3"><%= @article.method4_text %></div>
