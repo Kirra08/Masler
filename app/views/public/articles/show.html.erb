@@ -1,34 +1,67 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
-      <h1>sideberrrrrrrrr</h1>
-    </div>
+      <%= render "public/articles/sidebar" %>
     <div class="col-lg-8 md-lg-1">
+        <%= render "public/articles/article_index", article: @article %>
+        <h3 class="mt-3">トレーニング手順</h3>
         <div class="row">
-          <%= image_tag @article.get_article_image(200, 200) %>
-          <%= @article.title %>
-          <%= @article.text %>
-          <%= @article.gear_genre.name %>
-          <%= @article.body_part_genre.name %>
+          <div class="col-lg-4">
+            <div class="mt-4 mb-3"><%= image_tag @article.article_image.variant(resize_to_fill: [150, 150]) %></div>
+          </div>
+          <div class="col-lg-8">
+            <div class="mt-4 mb-3 p-3"><%= @article.method1_text %></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="mt-4 mb-3"><%= image_tag @article.article_image2.variant(resize_to_fill: [150, 150]) %></div>
+          </div>
+          <div class="col-lg-8">
+            <div class="mt-4 mb-3 p-3"><%= @article.method2_text %></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="mt-4 mb-3"><%= image_tag @article.article_image3.variant(resize_to_fill: [150, 150]) %></div>
+          </div>
+          <div class="col-lg-8">
+            <div class="mt-4 mb-3 p-3"><%= @article.method3_text %></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="mt-4 mb-3"><%= image_tag @article.article_image4.variant(resize_to_fill: [150, 150]) %></div>
+          </div>
+          <div class="col-lg-8">
+            <div class="mt-4 mb-3 p-3"><%= @article.method4_text %></div>
+          </div>
         </div>
         <div class="row">
           <%= form_with model: @article_comment, url: article_article_comments_path(@article), method: :post do |f| %>
-            <%= f.label :タイトル %>
-            <%= f.text_field :title %>
-            <%= f.label :本文 %>
-            <%= f.text_area :comment %>
+            <label for="remark"><%= f.label :コメント %></label>
+            <%= f.text_area :comment, placeholder: "コメントを入力してください", size: "40x5" %>
             <%= f.hidden_field :article_id, :value => @article.id %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.submit "投稿" %>
+            <%= f.submit "コメント投稿"%>
           <% end %>
         </div>
         <div class="row">
           <table class="table">
+            <thead>
+              <td>投稿者</td>
+              <td>コメント</td>
+              <td></td>
+              <td></td>
+            </thead>
             <% @article_comments.each do |comment| %>
               <tr>
-                <td><%= comment.title %></td>
+                <td><%= link_to comment.user.name, user_path(comment.user) %></td>
                 <td><%= comment.comment %></td>
                 <td><%= link_to "編集", edit_article_article_comment_path(@article,comment) %></td>
+                <td><%= link_to "削除", article_article_comment_path(@article, comment), method: :delete, data: { confirm: "【確認】コメントを削除してもよろしいですか？" } %></td>
               </tr>
             <% end %>
           </table>

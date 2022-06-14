@@ -7,7 +7,8 @@ class Public::CalendarsController < ApplicationController
 
     # params[:start_date]が来ているかをチェック（if）
     unless params[:start_date]
-      @calendars = Calendar.where(user_id: params[:user_id]).order(start_time: "desc")
+      now_date = Time.zone.now.strftime("%Y-%m")
+      @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc")
     else
     # start_dateが変数として来ていたら文字列の先頭から7文字分切り出す（2022-05）
       start_date = params[:start_date].slice(0..6)

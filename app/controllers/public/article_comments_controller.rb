@@ -7,7 +7,7 @@ class Public::ArticleCommentsController < ApplicationController
 
   def create
     @article_comment = ArticleComment.new(article_comments_params)
-    @article_comment.save
+    @article_comment.save!
     redirect_to request.referer
   end
 

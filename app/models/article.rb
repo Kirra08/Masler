@@ -7,6 +7,9 @@ class Article < ApplicationRecord
   has_many :calenders
 
   has_one_attached :article_image
+  has_one_attached :article_image2
+  has_one_attached :article_image3
+  has_one_attached :article_image4
 
   validates :title, presence: true
   validates :text, length: {maximum: 500}
@@ -28,6 +31,11 @@ class Article < ApplicationRecord
   def gear_genre_icon(name)
     if name == "ダンベル"
       "fas fa-dumbbell"
+    else if name == "バーベル"
+      "fas fa-dumbbell"
+    else name == "自重"
+      "fas fa-user"
+    end
     end
   end
 end
