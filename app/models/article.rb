@@ -7,6 +7,9 @@ class Article < ApplicationRecord
   has_many :calenders
 
   has_one_attached :article_image
+  has_one_attached :article_image2
+  has_one_attached :article_image3
+  has_one_attached :article_image4
 
   validates :title, presence: true
   validates :text, length: {maximum: 500}

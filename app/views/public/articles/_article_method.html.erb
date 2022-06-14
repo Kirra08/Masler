@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-lg-4">
+    <div class="mt-4 mb-3"><%= image_tag article.article_image.variant(resize_to_fill: [150, 150]) %></div>
+  </div>
+  <div class="col-lg-8">
+    <div class="mt-4 mb-3 p-3"><%= article.text %></div>
+  </div>
+</div>

@@ -41,6 +41,6 @@ class Public::ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :article_image, :body_part_genre_id, :gear_genre_id, :article_genre ,:user_id)
+    params.require(:article).permit(:title, :text, :article_image, :body_part_genre_id, :gear_genre_id, :article_genre ,:user_id,:article_image2,:article_image3,:article_image4, :method1_text, :method2_text, :method3_text, :method4_text)
   end
 end
