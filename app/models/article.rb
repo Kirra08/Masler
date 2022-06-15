@@ -36,6 +36,16 @@ class Article < ApplicationRecord
     else name == "自重"
       "fas fa-user"
     end
+  end
+
+  def Article.looks(search, word)
+    if search == "完全一致"
+      @article = Article.where("title LIKE?", "#{word}")
+    elsif search == "曖昧検索"
+      @article = Article.where("title LIKE?", "%#{word}%")
+    else
+      @article = Article.all
     end
+  end
   end
 end

@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+  end
   devise_for :admins
   devise_for :users
 
 
   scope module: :public do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
     resources :users, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -18,6 +22,7 @@ Rails.application.routes.draw do
 
     end
     get 'index' => 'favorites#index', as: 'favorite_index'
+    get 'search' => 'searches#search'
   end
 
   namespace :admin do

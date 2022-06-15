@@ -15,7 +15,7 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <% if @article.article_image2 == nil %>
+            <% unless @article.article_image2 == nil %>
               <div class="mt-4 mb-3"><%= image_tag @article.article_image2.variant(resize_to_fill: [150, 150]) %></div>
             <% end %>
           </div>
@@ -26,7 +26,7 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <% if @article.article_image3 == nil %>
+            <% unless @article.article_image3 == nil %>
               <div class="mt-4 mb-3"><%= image_tag @article.article_image3.variant(resize_to_fill: [150, 150]) %></div>
             <% end %>
           </div>
@@ -37,7 +37,7 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <% if @article.article_image4 == nil %>
+            <% unless @article.article_image4 == nil %>
               <div class="mt-4 mb-3"><%= image_tag @article.article_image4.variant(resize_to_fill: [150, 150]) %></div>
             <% end %>
           </div>
