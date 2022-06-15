@@ -2,6 +2,8 @@ class Public::ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @user = current_user
+    @body_part_genres = BodyPartGenre.all
+    @gear_genres = GearGenre.all
   end
 
   def show

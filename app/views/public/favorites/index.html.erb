@@ -2,7 +2,7 @@
   <div class="row">
     <%= render "public/articles/sidebar" %>
     <div class="col-lg-8 md-lg-1">
-      <%= render "public/users/user_profile", user: @user %>
+      <%= render "public/articles/articles", articles: @favorite_articles, text: "いいね一覧"%>
       <% @favorite_articles.each do |article| %>
         <%= render "public/articles/article_index", article: article %>
       <% end %>
