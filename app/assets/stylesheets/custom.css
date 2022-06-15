@@ -4,3 +4,14 @@
  *= require_self
  */
 
+.navbar{
+  border-bottom: solid #9f6f55;
+}
+
+.masler_icon:hover {
+  background-color: #90ee90;
+  border-radius: 15px;
+  text-decoration: none;
+  height: 60px;
+  text-align: center;
+}

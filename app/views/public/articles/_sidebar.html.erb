@@ -1,5 +1,10 @@
 <div class="col-lg-3">
-  <div class="row mt-5">
+  <div class="row mt-5" style="height: 50px">
+    <%= link_to root_path do %>
+      <h3 class="masler_icon mr-3"><%= image_tag "header.jpg", size: "50x50" %></h3>
+    <% end %>
+  </div>
+  <div class="row">
     <%= link_to articles_path do %>
       <h4 class="text-dark sidebar d-flex align-items-center ml-2" style="height: 50px">　<i class="fas fa-home"></i><i class="text-secondary">　ホーム　</i></h4>
     <% end %>
