@@ -1,0 +1,14 @@
+<div class="row p-2" style="background-color: #90ee90">
+  <div class="col-lg-3">
+    <span class="follow_link d-flex align-items-center text-dark" style="height: 40px;"><%= link_to  user_followings_path(user) do %>
+        <i class="text-dark">　　<%= user.followings.count %>フォロー中</i>
+      <% end %>
+    </span>
+  </div>
+  <div class="col-lg-3">
+    <div class="ml-2 follow_link d-flex align-items-center text-dark" style="height: 40px;"><%= link_to user_followers_path(user) do %>
+        <i class="text-dark">　　<%= user.followers.count %>フォロワー</i>
+      <% end %>
+    </div>
+  </div>
+</div>

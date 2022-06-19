@@ -13,19 +13,11 @@
       <%= article.text %>
     </div>
     <div class="mt-5 bd-highlight">
-    <i class=" ml-5 <%= article.gear_genre_icon(article.gear_genre.name) %>"></i>
-    <i class="ml-5"><%= article.body_part_genre.name %></i>
-    <i class="ml-5">
-     <% if article.favorited_by?(current_user) %>
-        <%= link_to article_favorites_path(article), method: :delete do %>
-          <%= article.favorites.count %>:♥
-        <% end %>
-      <% else %>
-        <%= link_to article_favorites_path(article), method: :post do %>
-          <%= article.favorites.count %>:♡
-        <% end %>
-      <% end %>
-    </i>
+    <i class=" ml-5"><%= image_tag article.gear_genre.gear_genre_icon, size: "20x20" %></i>
+    <i class="ml-5"> <%= image_tag article.body_part_genre.body_part_icon, size: "20x20" %></i>
+    <i id="favorite_btns_<%= article.id %>">
+      <%= render "public/favorites/favorite_btn", article: article %>
+      </i>
     <i class="ml-5">
       <%= link_to article_path(article) do %>
         <%= article.article_comments.count %>💬

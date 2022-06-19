@@ -28,16 +28,6 @@ class Article < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def gear_genre_icon(name)
-    if name == "ダンベル"
-      "fas fa-dumbbell"
-    else if name == "バーベル"
-      "fas fa-dumbbell"
-    else name == "自重"
-      "fas fa-user"
-    end
-  end
-
   def Article.looks(search, word)
     if search == "完全一致"
       @article = Article.where("title LIKE?", "#{word}")
@@ -46,6 +36,5 @@ class Article < ApplicationRecord
     else
       @article = Article.all
     end
-  end
   end
 end

@@ -26,6 +26,6 @@ class Admin::GearGenresController < ApplicationController
 
   private
   def gear_genre_params
-    params.require(:gear_genre).permit(:name)
+    params.require(:gear_genre).permit(:name, :gear_genre_icon)
   end
 end

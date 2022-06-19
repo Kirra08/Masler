@@ -1,21 +1,20 @@
 class Public::ArticleCommentsController < ApplicationController
-  def index
-  end
-
-  def new
-  end
 
   def create
     @article_comment = ArticleComment.new(article_comments_params)
-    @article_comment.save!
-    redirect_to request.referer
+    @user = current_user
+    @article = Article.find(params[:article_id])
+    @article_comments = ArticleComment.where(article_id: @article)
+    if @article_comment.save
+      flash.now[:notice] = "コメントを投稿しました"
+    end
   end
 
   def destroy
-    @article = Article.find(params[:article_id])
     @article_comment = ArticleComment.find(params[:id])
     @article_comment.destroy
-    redirect_to article_path(@article)
+    @article = Article.find(params[:article_id])
+    @article_comments = ArticleComment.where(article_id: @article)
   end
 
   def edit
