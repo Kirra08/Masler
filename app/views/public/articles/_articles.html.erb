@@ -10,11 +10,11 @@
 </div>
 <div class="row pt-1 pb-1 profile_header">
   <div class="col-lg-8">
-    <!--<select name="gear_genre">-->
-    <!--<!% @gear_genres.each do |gear_genre| %>-->
-    <!--    <option value="gear_genre"><!%= gear_genre.name %></option>-->
-    <!--  <!% end %>-->
-    <!--</select>-->
+    <%= form_with url: genre_search_path, method: :get do |f| %>
+      <%= f.collection_select :gear_genre_id, @gear_genres, :id, :name, prompt: "ジャンル検索" %>
+      <%= f.collection_select :body_part_genre_id, @body_part_genres, :id, :name, prompt: "ジャンル検索" %>
+      <%= f.submit "検索" %>
+    <% end %>
   </div>
   <div class="col-lg-4">
     <%= form_with method: :get, url: search_path do |f| %>

@@ -4,6 +4,8 @@
       <%= form_with model: @body_part_genre, url: admin_body_part_genres_path, method: :post do |f| %>
        <%= f.label :トレーニング部位 %>
        <%= f.text_field :name  %>
+       <%= f.label :ジャンルアイコン %>
+       <%= f.file_field :body_part_icon  %>
        <%= f.submit "新規投稿" %>
       <% end %>
 
@@ -18,7 +20,10 @@
           <tbody>
             <% @body_part_genres.each do |body_part_genre| %>
               <tr>
-                <td><%= body_part_genre.name %></td>
+                <td>
+                  <%= image_tag body_part_genre.body_part_icon, size: "20x20" %>
+                  　　<%= body_part_genre.name %>
+                </td>
                 <td><%= link_to "ジャンル名編集",edit_admin_body_part_genre_path(body_part_genre) %></td>
               </tr>
             <% end %>

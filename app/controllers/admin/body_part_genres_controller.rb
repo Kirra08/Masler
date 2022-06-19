@@ -22,6 +22,6 @@ class Admin::BodyPartGenresController < ApplicationController
 
   private
   def body_part_genre_params
-    params.require(:body_part_genre).permit(:name)
+    params.require(:body_part_genre).permit(:name, :body_part_icon)
   end
 end

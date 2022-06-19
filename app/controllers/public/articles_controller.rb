@@ -1,6 +1,6 @@
 class Public::ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.all.order(created_at: :desc)
     @user = current_user
     @body_part_genres = BodyPartGenre.all
     @gear_genres = GearGenre.all
@@ -9,7 +9,7 @@ class Public::ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @article_comment = ArticleComment.new
-    @article_comments = ArticleComment.all
+    @article_comments = ArticleComment.where(article_id: @article)
   end
 
   def edit
@@ -34,11 +34,21 @@ class Public::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save
-    redirect_to articles_path
+    if @article.save
+      flash[:notice] = "投稿しました"
+      redirect_to articles_path
+    else
+      render :new
+      @gear_genres = GearGenre.all
+      @body_part_genres = BodyPartGenre.all
+    end
   end
 
   def destroy
+    @article =Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "投稿を削除しました"
+    redirect_to articles_path
   end
 
   private

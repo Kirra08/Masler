@@ -4,6 +4,8 @@
       <%= form_with model: @gear_genre, url: admin_gear_genres_path, method: :post do |f| %>
        <%= f.label :使用器具 %>
        <%= f.text_field :name  %>
+       <%= f.label :ジャンルアイコン %>
+       <%= f.file_field :gear_genre_icon  %>
        <%= f.submit "新規投稿" %>
       <% end %>
 
@@ -18,7 +20,10 @@
           <tbody>
             <% @gear_genres.each do |gear_genre| %>
               <tr>
-                <td><%= gear_genre.name %></td>
+                <td>
+                  <%= image_tag gear_genre.gear_genre_icon, size: "20x20" %>
+                  　　<%= gear_genre.name %>
+                  </td>
                 <td><%= link_to "ジャンル名編集",edit_admin_gear_genre_path(gear_genre) %></td>
               </tr>
             <% end %>

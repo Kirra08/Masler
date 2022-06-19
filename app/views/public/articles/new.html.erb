@@ -1,4 +1,7 @@
 <div class="container">
+  <div id="erorr">
+    <%= render "layouts/error_messages", model: @article %>
+  </div>
   <div class="row">
     <div class="col-lg-8">
       <%= form_with model: @article, url: articles_path, method: :post do |f| %>

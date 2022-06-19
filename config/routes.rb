@@ -2,8 +2,14 @@ Rails.application.routes.draw do
 
   namespace :public do
   end
-  devise_for :admins
-  devise_for :users
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+  }
+
+  devise_for :users,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+  }
 
 
   scope module: :public do
@@ -13,6 +19,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      get "library" => "relationships#library", as: "library"
       resources :calendars, only: [:index, :create, :destroy]
     end
 
@@ -23,6 +30,8 @@ Rails.application.routes.draw do
     end
     get 'index' => 'favorites#index', as: 'favorite_index'
     get 'search' => 'searches#search'
+    patch 'user/delete_user', as: 'delete_user'
+    get "genre_search" => "searches#genre_search"
   end
 
   namespace :admin do
@@ -30,7 +39,10 @@ Rails.application.routes.draw do
 
     resources :gear_genres, only: [:index, :create, :edit, :update]
 
-    resources :articles,  only: [:destroy]
+    resources :articles,  only: [:index, :show, :destroy]
+
+    resources :users, only: [:index, :show]
+    patch 'user/delete_user', as: 'delete_user'
   end
 
 

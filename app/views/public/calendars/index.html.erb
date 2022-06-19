@@ -1,67 +1,39 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <%= form_with model: @calendar, url: user_calendars_path do |f| %>
-        <div class="form_group pb-3 mt-5">
-          <span class="pl-5 ml-2"><%= f.label :トレーニング %></span>
-          <span class="pl-4"><%= f.collection_select :article_id, @articles, :id, :title, prompt: "--選択してください--" %></span>
+        <div id="erorr">
+          <%= render "layouts/error_messages", model: @calendar %>
         </div>
-
-        <div class="form_group">
-          <span class="pl-5"><%= f.label :重量 %></span>
-          <span class="pl-5"><%= f.select :weight, (0..200) %></span>
-        </div>
-
-        <div class="form_group">
-          <span class="pl-5"><%= f.label :回数 %></span>
-          <span class="pl-5"><%= f.select :rep, (0..200) %></span>
-        </div>
-
-        <div class="form_group">
-          <span class="pl-5"><%= f.label :セット数 %></span>
-          <span class="pl-3"><%= f.select :set, (0..100) %></span>
-        </div>
-          <span class="pl-5 ml-1"><%= f.label :トレーニング日 %></span>
-          <div class="pl-4"><%= f.date_select :start_time %></div>
-          <span class="ml-5 pl-4"><%= f.submit "新規登録" %></span>
-        </div>
-      <% end %>
-    <div class="col-lg-9">
-      <%= month_calendar events: @user.calendars do |date, calendars| %>
-        <%= date.day %>
-        <% calendars.each do |calendar| %>
-          <div>
-            <%= link_to calendar.article.title, article_path(calendar.article_id) %>
+      <% if @user == current_user %>
+        <%= form_with model: @calendar, url: user_calendars_path, method: :post, class: "js-form", local: false do |f| %>
+        <div class="calendar_bg mt-4">
+          <div class="form_group pb-3 mt-4">
+            <span class="pl-5 ml-4"><%= f.label :トレーニング %></span>
+            <span class="pl-4 ml-2"><%= f.collection_select :article_id, @articles, :id, :title, prompt: "--選択してください--" %></span>
           </div>
+
+          <div class="form_group">
+            <span class="pl-5 ml-2"><%= f.label :重量 %></span>
+            <span class="pl-5 ml-2"><%= f.select :weight, (0..200) %></span>
+          </div>
+
+          <div class="form_group">
+            <span class="pl-5 ml-2"><%= f.label :回数 %></span>
+            <span class="pl-5 ml-2"><%= f.select :rep, (0..200) %></span>
+          </div>
+
+          <div class="form_group">
+            <span class="pl-5 ml-2"><%= f.label :セット数 %></span>
+            <span class="pl-3 ml-2"><%= f.select :set, (0..100) %></span>
+          </div>
+            <span class="pl-5 ml-1"><%= f.label :トレーニング日 %></span>
+            <div class="pl-4 ml-2"><%= f.date_select :start_time %></div>
+            <div class="ml-5 pl-4 mt-3 mb-4"><%= f.submit "新規登録" %></div></div>
+          <% end %>
         <% end %>
-      <% end %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>トレーニング名</th>
-            <th>重量</th>
-            <th>回数</th>
-            <th>セット数</th>
-            <th>トレーニング日</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <% @calendars.each do |calender| %>
-          <tbody>
-            <tr>
-              <td><%= calender.article.title %></td>
-              <td><%= calender.weight %></td>
-              <td><%= calender.rep %></td>
-              <td><%= calender.set %></td>
-              <td><%= calender.start_time.strftime("%Y-%m-%d")%></td>
-              <% if calender.user_id == current_user.id %>
-                <td><%= link_to "削除", user_calendar_path(current_user,calender), method: :destroy, data: {confirm:"削除しますか"} %></td>
-              <% end %>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
-    </div>
+      </div>
+      <div class="col-lg-9" id="calendar">
+       <%= render "public/calendars/calendar", calendars: @calendars, user: @user %>
+      </div>
   </div>
 </div>
