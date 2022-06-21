@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <%= render "public/articles/sidebar" %>
+    <div class="col-lg-8">
+      <%= render "public/users/user_profile", user: @user %>
+      <% @articles.each do |article| %>
+        <%= render "public/articles/article_index", article: article %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="row profile_header">
+  <div class="col-lg-7 ml-3">
+    <div class="row">
+      <h3><%= text %></h3>
+    </div>
+    <div class="row ">
+      <%= articles.count %>件の投稿
+    </div>
+  </div>
+</div>
+<div class="row pt-1 pb-1 profile_header">
+  <div class="col-lg-8">
+    <%= form_with url: genre_search_path, method: :get do |f| %>
+      <%= f.collection_select :gear_genre_id, @gear_genres, :id, :name, prompt: "ジャンル検索" %>
+      <%= f.collection_select :body_part_genre_id, @body_part_genres, :id, :name, prompt: "ジャンル検索" %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <div class="col-lg-4">
+    <%= form_with method: :get, url: search_path do |f| %>
+      <%= f.hidden_field :range, :value => "投稿" %>
+      <%= f.hidden_field :search, :value => "曖昧検索" %>
+      <div class="border bg-white">
+        <%= f.text_field :word, placeholder: "Search", style: "border: 0; outline: 0;" %>
+        <%= f.button :type => "submit", style: "border-style: none; background: none;" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

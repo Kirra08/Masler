@@ -1,0 +1,2 @@
+module BodyPartGenreHelper
+end

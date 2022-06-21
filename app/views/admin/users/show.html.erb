@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <%= render "admin/users/user_profile", user: @user %>
+      <% @articles.each do |article| %>
+        <%= render "admin/articles/article_index", article: article %>
+      <% end %>
+    </div>
+  </div>
+</div>

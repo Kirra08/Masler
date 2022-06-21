@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+        <div id="erorr">
+          <%= render "layouts/error_messages", model: @calendar %>
+        </div>
+      <% if @user == current_user %>
+        <%= form_with model: @calendar, url: user_calendars_path, method: :post, class: "js-form", local: false do |f| %>
+        <div class="calendar_bg mt-4">
+          <div class="form_group pb-3 mt-4">
+            <span class="pl-5 ml-4"><%= f.label :トレーニング %></span>
+            <span class="pl-4 ml-2"><%= f.collection_select :article_id, @articles, :id, :title, prompt: "--選択してください--" %></span>
+          </div>
+
+          <div class="form_group">
+            <span class="pl-5 ml-2"><%= f.label :重量 %></span>
+            <span class="pl-5 ml-2"><%= f.select :weight, (0..200) %></span>
+          </div>
+
+          <div class="form_group">
+            <span class="pl-5 ml-2"><%= f.label :回数 %></span>
+            <span class="pl-5 ml-2"><%= f.select :rep, (0..200) %></span>
+          </div>
+
+          <div class="form_group">
+            <span class="pl-5 ml-2"><%= f.label :セット数 %></span>
+            <span class="pl-3 ml-2"><%= f.select :set, (0..100) %></span>
+          </div>
+            <span class="pl-5 ml-1"><%= f.label :トレーニング日 %></span>
+            <div class="pl-4 ml-2"><%= f.date_select :start_time %></div>
+            <div class="ml-5 pl-4 mt-3 mb-4"><%= f.submit "新規登録" %></div></div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-lg-9" id="calendar">
+       <%= render "public/calendars/calendar", calendars: @calendars, user: @user %>
+      </div>
+  </div>
+</div>

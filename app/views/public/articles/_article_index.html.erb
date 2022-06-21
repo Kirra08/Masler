@@ -1,0 +1,29 @@
+<div class="row border p-2">
+  <div class="w-25 h-100" style="text-align : center">
+    <%= link_to article_path(article)  do %>
+      <%= image_tag article.get_article_image(200,150) %>
+    <% end %>
+    <div class="mt-1"><%= link_to article.user.name, user_path(article.user) %></div>
+  </div>
+  <div class="d-flex flex-column bd-highlight mb-3">
+    <div class="p-2 bd-highlight">
+      <h5 class="pl-4"><%= article.title %></h5>
+    </div>
+    <div class="p-2 bd-highlight ml-5 mr-4">
+      <%= article.text %>
+    </div>
+    <div class="mt-5 bd-highlight">
+    <i class=" ml-5"><%= image_tag article.gear_genre.gear_genre_icon, size: "20x20" %></i>
+    <i class="ml-5"> <%= image_tag article.body_part_genre.body_part_icon, size: "20x20" %></i>
+    <i id="favorite_btns_<%= article.id %>">
+      <%= render "public/favorites/favorite_btn", article: article %>
+      </i>
+    <i class="ml-5">
+      <%= link_to article_path(article) do %>
+        <%= article.article_comments.count %>💬
+      <% end %>
+    </i>
+    </div>
+  </div>
+
+</div>

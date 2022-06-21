@@ -1,0 +1,15 @@
+<div class="row p-2 border-left border-right border-top" style="background-color: #90ee90">
+  <div class="col-lg-5">
+    <%= image_tag user.get_profile_image(290,290) %>
+  </div>
+  <div class="col-lg-7">
+    <div class="row">
+      <div class="col-lg-10">
+        <h3 class="ml-2 mt-2"><%= user.name %></h3>
+      </div>
+    </div>
+    <div class="row m-3 mt-5">
+      <%= user.introduction %>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+/*
+ *= require simple_calendar
+ *= require_tree .
+ *= require_self
+ */
+
+.navbar{
+  border-bottom: solid #3cb371;
+}
+
+.masler_icon:hover {
+  background-color: #90ee90;
+  border-radius: 15px;
+  text-decoration: none;
+  height: 60px;
+  text-align: center;
+}
+
+.light_green_btn {
+  background-color: #3cb371;
+  color: white;
+}
+.light_green_btn:hover {
+  background-color: #2e8b57;
+  color: white;
+}
+
+.light_green {
+  background-color: #3cb371;
+  color: white;
+}
+
+.calendar_bg {
+  background-color: #90ee90;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.header_btn {
+  background-color: #90ee90;
+  border-radius: 15px;
+}
+
+.header_btn:hover {
+  background-color: #3cb371;
+  border-radius: 15px;
+}
