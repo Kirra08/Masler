@@ -57,6 +57,20 @@ vertical-align: top;
   background-color: #6b8e23;
   border-radius: 15px;
 }
+
 .calendar {
   padding: 7px;
+}
+
+.edit_user {
+  padding: 10px;
+  border-radius: 15px;
+  border: solid;
+}
+
+.edit_user:hover {
+  padding: 10px;
+  border-radius: 15px;
+  border: solid;
+  background-color: #6b8e23;
 }

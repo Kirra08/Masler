@@ -34,13 +34,13 @@ class Public::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @gear_genres = GearGenre.all
+    @body_part_genres = BodyPartGenre.all
     if @article.save
       flash[:notice] = "投稿しました"
       redirect_to articles_path
     else
       render :new
-      @gear_genres = GearGenre.all
-      @body_part_genres = BodyPartGenre.all
     end
   end
 

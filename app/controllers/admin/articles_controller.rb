@@ -5,6 +5,7 @@ class Admin::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @article_comments = ArticleComment.where(article_id: @article)
   end
 
   def destroy

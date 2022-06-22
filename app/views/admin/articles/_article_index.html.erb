@@ -1,6 +1,6 @@
 <div class="row border p-2">
   <div class="w-25 h-100" style="text-align : center">
-    <%= link_to article_path(article)  do %>
+    <%= link_to admin_article_path(article)  do %>
       <%= image_tag article.get_article_image(200,150) %>
     <% end %>
     <div class="mt-1"><%= link_to article.user.name, admin_user_path(article.user) %></div>
@@ -17,7 +17,7 @@
     <i class="ml-5"> <%= image_tag article.body_part_genre.body_part_icon, size: "20x20" %></i>
     <i class="ml-5">
       <%= article.favorites.count %>:♥
-      </i>
+    </i>
     <i class="ml-5">
       <%= link_to admin_article_path(article) do %>
         <%= article.article_comments.count %>💬
