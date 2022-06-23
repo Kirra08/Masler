@@ -1,4 +1,6 @@
 class Public::ArticlesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @articles = Article.all.order(created_at: :desc)
     @user = current_user

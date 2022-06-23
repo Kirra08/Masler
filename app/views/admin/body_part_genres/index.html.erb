@@ -1,32 +1,64 @@
 <div class="container">
+  <div id="erorr">
+    <%= render "layouts/error_messages", model: @body_part_genre %>
+  </div>
+  <div id="erorr">
+    <%= render "layouts/error_messages", model: @gear_genre %>
+  </div>
+  <div class="col-lg-4 ml-5 mb-3">
+    <h2>ジャンル一覧</h2>
+  </div>
   <div class="row">
-    <div class="col-lg-8">
-      <%= form_with model: @body_part_genre, url: admin_body_part_genres_path, method: :post do |f| %>
-       <%= f.label :トレーニング部位 %>
-       <%= f.text_field :name  %>
-       <%= f.label :ジャンルアイコン %>
-       <%= f.file_field :body_part_icon  %>
-       <%= f.submit "新規投稿" %>
+    <div class="col-lg-6 mt-4">
+      <%= form_with model: @body_part_genre, url: admin_body_part_genres_path, method: :post, local: false do |f| %>
+       <div class="form-group">
+         <%= f.label :トレーニング部位 %>
+         <%= f.text_field :name  %>
+       </div>
+       <div class="form-group">
+         <%= f.label :ジャンルアイコン %>
+         <%= f.file_field :body_part_icon  %>
+       </div>
+       <div class="text-center mr-5 pr-5"><%= f.submit "新規投稿", class:"btn light_green btn-sm" %></div>
       <% end %>
 
       <div class="row my-4">
-        <table class="table">
+        <table class="table table-hover">
           <thead>
             <tr>
-              <td>テーブル名</td>
+              <td>トレーニング部位</td>
               <td></td>
             </tr>
           </thead>
-          <tbody>
-            <% @body_part_genres.each do |body_part_genre| %>
-              <tr>
-                <td>
-                  <%= image_tag body_part_genre.body_part_icon, size: "20x20" %>
-                  　　<%= body_part_genre.name %>
-                </td>
-                <td><%= link_to "ジャンル名編集",edit_admin_body_part_genre_path(body_part_genre) %></td>
-              </tr>
-            <% end %>
+          <tbody  id="body_part_genres">
+            <%= render "admin/body_part_genres/index", body_part_genres: @body_part_genres %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+        <div class="col-lg-6 mt-4">
+      <%= form_with model: @gear_genre, url: admin_gear_genres_path, method: :post, local: false do |f| %>
+        <div class="form-group">
+          <i class="mr-5"><%= f.label :使用器具名 %></i>
+          <%= f.text_field :name  %>
+        </div>
+        <div class="form-group">
+          <%= f.label :ジャンルアイコン %>
+          <%= f.file_field :gear_genre_icon  %>
+        </div>
+        <div class="text-center mr-5 pr-5 "><%= f.submit "新規投稿", class:"btn light_green btn-sm"%></div>
+      <% end %>
+
+      <div class="row my-4">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>使用器具</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody id="gear_genres">
+           <%= render "admin/gear_genres/index", gear_genres: @gear_genres %>
           </tbody>
         </table>
       </div>

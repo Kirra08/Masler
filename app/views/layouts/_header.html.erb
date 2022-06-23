@@ -44,25 +44,25 @@
         <% elsif admin_signed_in? %>
 
           <li class="nav-link">
-            <%= link_to admin_users_path, class:"btn bg-dark-brown" do %>
+            <%= link_to admin_users_path, class:"btn header_btn" do %>
               <i class="fas fa-users"></i> 会員一覧
             <% end %>
           </li>
 
           <li class="nav-link">
-            <%= link_to admin_articles_path, class:"btn bg-dark-brown" do %>
-              <i class="fas fa-shopping-cart"></i> 投稿一覧
+            <%= link_to admin_articles_path, class:"btn header_btn" do %>
+              <i class="fas fa-newspaper"></i> 投稿一覧
             <% end %>
           </li>
 
           <li class="nav-link">
-            <%= link_to admin_gear_genres_path, class:"btn bg-dark-brown" do %>
-              <i class="fas fa-cookie-bite"></i> ジャンル一覧
+            <%= link_to admin_gear_genres_path, class:"btn header_btn" do %>
+              <i class="fas fa-columns"></i> ジャンル一覧
             <% end %>
           </li>
 
           <li class="nav-link">
-            <%= link_to destroy_admin_session_path, method: :delete, class:"btn bg-dark-brown" do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class:"btn header_btn" do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>

@@ -1,0 +1,9 @@
+<% body_part_genres.each do |body_part_genre| %>
+  <tr>
+    <td>
+      <%= image_tag body_part_genre.body_part_icon, size: "20x20" %>
+      　　<%= body_part_genre.name %>
+    </td>
+    <td><%= link_to "ジャンル編集",edit_admin_body_part_genre_path(body_part_genre) %></td>
+  </tr>
+<% end %>

@@ -58,15 +58,15 @@
         </div>
         <div class="row">
           <%= form_with model: @article_comment, url: article_article_comments_path(@article), method: :post, local: false do |f| %>
-            <label for="remark"><%= f.label :コメント %></label>
-            <%= f.text_area :comment, placeholder: "コメントを入力してください", size: "40x5" %>
+            <%= f.label :コメント %>
+            <%= f.text_area :comment, placeholder: "コメントを入力してください", size: "40x1" %>
             <%= f.hidden_field :article_id, :value => @article.id %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.submit "コメント投稿"%>
+            <%= f.submit "コメント投稿" , class: "btn light_green btn-sm"%>
           <% end %>
         </div>
         <div class="row">
-          <table class="table">
+          <table class="table table-hover">
             <thead>
               <td>投稿者</td>
               <td>コメント</td>
