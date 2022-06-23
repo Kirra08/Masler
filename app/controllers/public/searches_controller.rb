@@ -2,6 +2,7 @@ class Public::SearchesController < ApplicationController
   def search
     @articles = Article.looks(params[:search], params[:word])
     @gear_genres = GearGenre.all
+    @body_part_genres = BodyPartGenre.all
   end
 
   def genre_search

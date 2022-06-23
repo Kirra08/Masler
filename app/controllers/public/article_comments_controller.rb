@@ -23,7 +23,7 @@ class Public::ArticleCommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @article_comment = ArticleComment.find(params[:id])
     unless @article_comment.user.id == current_user.id
-      redirect_to articles_path
+      redirect_to article_path(@article)
     end
   end
 

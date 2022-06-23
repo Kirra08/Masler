@@ -18,14 +18,19 @@ class Public::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @gear_genres = GearGenre.all
     @body_part_genres = BodyPartGenre.all
+    unless @article.user_id == current_user.id
+      redirect_to articles_path
+    end
   end
 
   def update
     @gear_genres = GearGenre.all
     @body_part_genres = BodyPartGenre.all
     @article = Article.find(params[:id])
-    @article.update(article_params)
-    redirect_to article_path(@article)
+    if @article.update(article_params)
+      flash[:notice] = "投稿を更新しました"
+      redirect_to article_path(@article)
+    end
   end
 
   def new
