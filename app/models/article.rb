@@ -15,6 +15,7 @@ class Article < ApplicationRecord
   validates :text, length: {maximum: 500}
   validates :body_part_genre, presence: true
   validates :gear_genre, presence: true
+  validates :method1_text, presence: true
 
   def get_article_image(width, height)
     unless article_image.attached?

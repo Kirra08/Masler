@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -10,6 +8,10 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
+
+  devise_scope :user do
+    post 'user/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
 
   scope module: :public do
@@ -39,8 +41,9 @@ Rails.application.routes.draw do
 
     resources :gear_genres, only: [:index, :create, :edit, :update]
 
-    resources :articles,  only: [:index, :show, :destroy]
-
+    resources :articles,  only: [:index, :show, :destroy] do
+      resources :article_comments, only: [:destroy]
+    end
     resources :users, only: [:index, :show]
     patch 'user/delete_user', as: 'delete_user'
   end

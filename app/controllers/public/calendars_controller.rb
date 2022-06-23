@@ -1,4 +1,6 @@
 class Public::CalendarsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @calendar = Calendar.new
     @articles = Article.all

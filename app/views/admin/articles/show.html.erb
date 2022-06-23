@@ -1,15 +1,11 @@
 <div class="container">
   <div class="row">
-      <%= render "public/articles/sidebar" %>
-    <div class="col-lg-8 md-lg-1">
-        <%= render "public/articles/article_index", article: @article %>
+    <div class="col-lg-8 mx-auto">
+        <%= render "admin/articles/article_index", article: @article %>
           <div class="row mt-3">
             <div class="col-lg-8"><h3>トレーニング手順</h3></div>
             <div class="col-lg-4">
-              <% if @article.user_id == current_user.id %>
-                <i class="ml-5"><%= link_to "編集", edit_article_path(@article), class:"btn btn-success" %></i>
-                <i class="ml-3"><%= link_to "削除", article_path(@article), method: :delete, class: "btn btn-outline-danger", data: {confirm:"本当に削除しますか？"} %></i>
-              <% end %>
+              <i class="ml-3"><%= link_to "投稿を削除する", article_path(@article), method: :delete, class: "btn btn-outline-danger", data: {confirm:"本当に削除しますか？"} %></i>
             </div>
           </div>
         <div class="row">
@@ -53,20 +49,10 @@
             <div class="mt-4 mb-3 p-3"><%= @article.method4_text %></div>
           </div>
         </div>
-        <div id="erorr">
-          <%= render "layouts/error_messages", model: @article_comment %>
-        </div>
+
         <div class="row">
-          <%= form_with model: @article_comment, url: article_article_comments_path(@article), method: :post, local: false do |f| %>
-            <label for="remark"><%= f.label :コメント %></label>
-            <%= f.text_area :comment, placeholder: "コメントを入力してください", size: "40x5" %>
-            <%= f.hidden_field :article_id, :value => @article.id %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.submit "コメント投稿"%>
-          <% end %>
-        </div>
-        <div class="row">
-          <table class="table">
+          <h3 class="ml-3">コメント一覧</h3>
+          <table class="table table-hover">
             <thead>
               <td>投稿者</td>
               <td>コメント</td>
@@ -74,7 +60,7 @@
               <td></td>
             </thead>
             <tbody id="comments">
-               <%= render "public/article_comments/comment_index", article_comments: @article_comments, article: @article %>
+               <%= render "admin/article_comments/comment_index", article_comments: @article_comments, article: @article %>
             </tbody>
           </table>
         </div>

@@ -4,4 +4,5 @@ class BodyPartGenre < ApplicationRecord
   has_one_attached :body_part_icon
 
   validates :name, presence: true
+  validates :body_part_icon, presence: true
 end

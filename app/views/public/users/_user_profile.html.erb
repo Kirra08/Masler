@@ -12,9 +12,17 @@
       <%= user.articles.count %>件の投稿
     </div>
   </div>
-  <div class="col-lg-4" id="follow_btn">
-    <%= render "public/relationships/follow_btn", user: user %>
-  </div>
+  <% if user == current_user %>
+    <div class="col-lg-4">
+      <div class="edit_user mt-2 ml-4">
+        <%= link_to "　プロフィール編集", edit_user_path(user), class: "text-dark" %>
+      </div>
+    </div>
+    <% else %>
+      <div class="col-lg-4" id="follow_btn">
+        <%= render "public/relationships/follow_btn", user: user %>
+      </div>
+  <% end %>
 </div>
 <div class="row p-2 border-left border-right border-top" style="background-color: #90ee90">
   <div class="col-lg-5">

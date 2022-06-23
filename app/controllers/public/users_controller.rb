@@ -1,4 +1,7 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
+
   def show
     @user = User.find(params[:id])
     @articles = Article.all.where(user_id: @user).order(created_at: :desc)
@@ -20,6 +23,13 @@ class Public::UsersController < ApplicationController
     #ログイン情報をリセット（ログインされたままに
     reset_session
     redirect_to root_path, notice: "退会しました"
+  end
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
 
   private

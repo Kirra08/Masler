@@ -1,4 +1,6 @@
 class Admin::GearGenresController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @gear_genres = GearGenre.all
     @gear_genre = GearGenre.new
@@ -20,8 +22,9 @@ class Admin::GearGenresController < ApplicationController
   def create
     @gear_genres = GearGenre.all
     @gear_genre = GearGenre.new(gear_genre_params)
-    @gear_genre.save
-    redirect_to  request.referer
+    if @gear_genre.save
+      flash[:notice] = "ジャンルを作成しました"
+    end
   end
 
   private

@@ -1,4 +1,5 @@
 class Public::ArticleCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @article_comment = ArticleComment.new(article_comments_params)
@@ -15,11 +16,15 @@ class Public::ArticleCommentsController < ApplicationController
     @article_comment.destroy
     @article = Article.find(params[:article_id])
     @article_comments = ArticleComment.where(article_id: @article)
+    flash.now[:notice] = "コメントを削除しました"
   end
 
   def edit
     @article = Article.find(params[:article_id])
     @article_comment = ArticleComment.find(params[:id])
+    unless @article_comment.user.id == current_user.id
+      redirect_to article_path(@article)
+    end
   end
 
   def update

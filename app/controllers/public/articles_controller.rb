@@ -1,4 +1,6 @@
 class Public::ArticlesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @articles = Article.all.order(created_at: :desc)
     @user = current_user
@@ -16,14 +18,19 @@ class Public::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @gear_genres = GearGenre.all
     @body_part_genres = BodyPartGenre.all
+    unless @article.user_id == current_user.id
+      redirect_to articles_path
+    end
   end
 
   def update
     @gear_genres = GearGenre.all
     @body_part_genres = BodyPartGenre.all
     @article = Article.find(params[:id])
-    @article.update(article_params)
-    redirect_to article_path(@article)
+    if @article.update(article_params)
+      flash[:notice] = "投稿を更新しました"
+      redirect_to article_path(@article)
+    end
   end
 
   def new
@@ -34,13 +41,13 @@ class Public::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @gear_genres = GearGenre.all
+    @body_part_genres = BodyPartGenre.all
     if @article.save
       flash[:notice] = "投稿しました"
       redirect_to articles_path
     else
       render :new
-      @gear_genres = GearGenre.all
-      @body_part_genres = BodyPartGenre.all
     end
   end
 

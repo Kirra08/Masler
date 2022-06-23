@@ -18,12 +18,17 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to user_path(user), notice: 'guestuserでログインしました。'
+  end
    protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute]
+
   def user_state
     #userテーブルからemail情報をもとにuserのデータを引き出す
     @user = User.find_by(email: params[:user][:email])

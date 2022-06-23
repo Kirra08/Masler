@@ -1,7 +1,11 @@
 class Admin::BodyPartGenresController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @body_part_genres = BodyPartGenre.all
     @body_part_genre = BodyPartGenre.new
+    @gear_genres = GearGenre.all
+    @gear_genre = GearGenre.new
   end
 
   def edit
@@ -16,8 +20,10 @@ class Admin::BodyPartGenresController < ApplicationController
 
   def create
     @body_part_genre = BodyPartGenre.new(body_part_genre_params)
-    @body_part_genre.save
-    redirect_to  request.referer
+    @body_part_genres = BodyPartGenre.all
+    if @body_part_genre.save
+      flash[:notice] = "ジャンルを作成しました"
+    end
   end
 
   private

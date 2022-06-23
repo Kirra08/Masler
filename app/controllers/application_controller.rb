@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-      articles_path
+      if user_signed_in?
+        articles_path
+      else
+        admin_articles_path
+      end
     end
 
     def after_sign_out_path_for(resource)
