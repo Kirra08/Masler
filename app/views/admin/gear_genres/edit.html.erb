@@ -1,5 +1,11 @@
 <div class="container">
   <div class="row">
+  <div class="col-lg-4 ml-5 mb-3">
+    <h2>ジャンル編集</h2>
+  </div>
+    <div id="erorr">
+      <%= render "layouts/error_messages", model: @gear_genre %>
+    </div>
     <div class="col-lg-8">
       <%= form_with model: @gear_genre,url: admin_gear_genre_path do |f| %>
         <%= f.label :ジャンル名 %>

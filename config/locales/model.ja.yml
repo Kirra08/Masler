@@ -25,3 +25,9 @@ ja:
         rep: 回数
       article_comment:
         comment: コメント
+      body_part_genre:
+        name: トレーニング部位
+        body_part_icon: アイコン
+      gear_genre:
+        name: 使用器具名
+        gear_genre_icon: アイコン

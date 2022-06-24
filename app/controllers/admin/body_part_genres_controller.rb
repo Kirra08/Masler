@@ -1,6 +1,6 @@
 class Admin::BodyPartGenresController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @body_part_genres = BodyPartGenre.all
     @body_part_genre = BodyPartGenre.new
@@ -14,8 +14,12 @@ class Admin::BodyPartGenresController < ApplicationController
 
   def update
     @body_part_genre = BodyPartGenre.find(params[:id])
-    @body_part_genre = BodyPartGenre.update(body_part_genre_params)
-    redirect_to admin_body_part_genres_path
+    if @body_part_genre = BodyPartGenre.update(body_part_genre_params)
+      redirect_to admin_body_part_genres_path
+      flash[:notice] = "ジャンルを更新しました"
+    else
+      render :edit
+    end
   end
 
   def create

@@ -1,6 +1,6 @@
 class Admin::GearGenresController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @gear_genres = GearGenre.all
     @gear_genre = GearGenre.new
@@ -12,8 +12,11 @@ class Admin::GearGenresController < ApplicationController
 
   def update
     @gear_genre = GearGenre.find(params[:id])
-    @gear_genre = GearGenre.update(gear_genre_params)
-    redirect_to admin_gear_genres_path
+    if @gear_genre = GearGenre.update(gear_genre_params)
+      redirect_to admin_body_part_genres_path
+    else
+      render :edit
+    end
   end
 
   def new

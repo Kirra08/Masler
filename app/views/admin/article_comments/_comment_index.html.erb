@@ -1,6 +1,6 @@
 <% article_comments.each do |comment| %>
  <tr>
-   <td><%= link_to comment.user.name, user_path(comment.user) %></td>
+   <td><%= link_to comment.user.name, admin_user_path(comment.user) %></td>
    <td><%= comment.comment %></td>
    <td></td>
    <td>

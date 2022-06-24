@@ -19,7 +19,7 @@
          <%= f.label :ジャンルアイコン %>
          <%= f.file_field :body_part_icon  %>
        </div>
-       <div class="text-center mr-5 pr-5"><%= f.submit "新規投稿", class:"btn light_green btn-sm" %></div>
+       <div class="text-center mr-5 pr-5"><%= f.submit "ジャンル作成", class:"btn light_green btn-sm" %></div>
       <% end %>
 
       <div class="row my-4">
@@ -46,7 +46,7 @@
           <%= f.label :ジャンルアイコン %>
           <%= f.file_field :gear_genre_icon  %>
         </div>
-        <div class="text-center mr-5 pr-5 "><%= f.submit "新規投稿", class:"btn light_green btn-sm"%></div>
+        <div class="text-center mr-5 pr-5 "><%= f.submit "ジャンル作成", class:"btn light_green btn-sm"%></div>
       <% end %>
 
       <div class="row my-4">
@@ -56,10 +56,12 @@
               <td>使用器具</td>
               <td></td>
             </tr>
+
           </thead>
-          <tbody id="gear_genres">
-           <%= render "admin/gear_genres/index", gear_genres: @gear_genres %>
-          </tbody>
+          <tbody id="gear_genres"><% @gear_genres.each do |gear_genre| %>
+           <%= render "admin/gear_genres/index", gear_genre: gear_genre %>
+          <% end %></tbody>
+
         </table>
       </div>
     </div>

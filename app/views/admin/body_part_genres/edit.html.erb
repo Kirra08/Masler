@@ -1,10 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-4 ml-5 mb-3">
+      <h2>ジャンル編集</h2>
+    </div>
+    <div id="erorr">
+      <%= render "layouts/error_messages", model: @body_part_genre %>
+    </div>
+    <div class="col-lg-8 mx-auto">
       <%= form_with model: @body_part_genre,url: admin_body_part_genre_path, method: :patch do |f| %>
-        <%= f.label :ジャンル名 %>
-        <%= f.text_field :name %>
-        <%= f.submit "ジャンル名更新" %>
+        <div class="form-group">
+         <%= f.label :トレーニング部位 %>
+         <%= f.text_field :name  %>
+       </div>
+       <div class="form-group">
+         <%= f.label :ジャンルアイコン %>
+         <%= f.file_field :body_part_icon  %>
+       </div>
+       <div class="text-center mr-5 pr-5"><%= f.submit "ジャンル更新", class:"btn light_green btn-sm" %></div>
       <% end %>
     </div>
   </div>
