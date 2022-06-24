@@ -1,40 +1,50 @@
 <div class="container">
+  <h3 class="d-inline-block px-4 ml-5 bg-light_green"><i class="fas fa-user"></i> 新規登録</h3>
   <div class="row">
     <div class="col-lg-12 mx-auto">
-      <h2>新規登録</h2>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+      <div class="form w-75 mx-auto my-4 p-3" >
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
 
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+          <div class="form-group row">
+              <label for="email" class="col-sm-3 col-form-label">メールアドレス</label>
+              <div class="col-sm-9">
+                <%= f.email_field :email, autofocus: true, autocomp3lete: "email", class: "form-control", "placeholder" => "sample@example.com" %>
+              </div>
+            </div>
 
-        <div class="field">
-          <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-3 col-form-label">ユーザーネーム</label>
+            <div class="col-sm-9">
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+            </div>
+          </div>
 
-        <div class="field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
+          <div class="form-group row">
+            <label for="password" class="col-sm-3 col-form-label">パスワード(6文字以上)</label>
+            <div class="col-sm-9">
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control"  %>
+            </div>
+          </div>
 
-        <div class="field">
-          <%= f.label :パスワード再入力 %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
+          <div class="form-group row">
+            <label for="password_confirmation" class="col-sm-3 col-form-label">パスワード(確認用)</label>
+            <div class="col-sm-9">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"  %>
+            </div>
+          </div>
 
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
-      <% end %>
+          <div class="actions text-center mt-4">
+            <%= f.submit "新規登録", class: "btn light_green px-5" %>
+          </div>
+        <% end %>
+      </div>
 
-      <%= render "public/shared/links" %>
+      <div class="sign-up mt-3">
+        <h5 class="bg-light-brown d-inline-block px-3"> 既に登録済みの方</h3>
+        <p class="ml-5 text-center"><%= link_to "こちら", new_user_session_path, class: "hover-link" %> からログインしてください。</p>
+      </div>
     </div>
   </div>
 </div>
