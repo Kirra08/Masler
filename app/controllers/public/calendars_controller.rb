@@ -8,10 +8,10 @@ class Public::CalendarsController < ApplicationController
     # params[:start_date]が来ているかをチェック（if）
     unless params[:start_date]
       now_date = Time.zone.now.strftime("%Y-%m")
-      @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc")
+      @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc").page(params[:page]).per(8)
     else
       start_date = params[:start_date].slice(0..6)
-      @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{start_date}%").order(start_time: "desc")
+      @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{start_date}%").order(start_time: "desc").page(params[:page]).per(8)
     end
   end
 

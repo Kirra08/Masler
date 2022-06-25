@@ -1,16 +1,22 @@
 <div class="container">
   <div class="row">
-  <div class="col-lg-4 ml-5 mb-3">
-    <h2>ジャンル編集</h2>
-  </div>
+    <div class="col-lg-4 ml-5 mb-3">
+      <h2>ジャンル編集</h2>
+    </div>
     <div id="erorr">
       <%= render "layouts/error_messages", model: @gear_genre %>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-8 mx-auto">
       <%= form_with model: @gear_genre,url: admin_gear_genre_path do |f| %>
-        <%= f.label :ジャンル名 %>
-        <%= f.text_field :name %>
-        <%= f.submit "ジャンル名更新" %>
+        <div class="form-group">
+         <%= f.label :トレーニング部位 %>
+         <%= f.text_field :name  %>
+       </div>
+       <div class="form-group">
+         <%= f.label :ジャンルアイコン %>
+         <%= f.file_field :gear_genre_icon  %>
+       </div>
+       <div class="text-center mr-5 pr-5"><%= f.submit "ジャンル更新", class:"btn light_green btn-sm" %></div>
       <% end %>
     </div>
   </div>

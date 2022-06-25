@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @articles = Article.all.where(user_id: @user).order(created_at: :desc)
+    @articles = Article.all.where(user_id: @user).order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def edit

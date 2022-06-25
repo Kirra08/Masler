@@ -14,7 +14,9 @@ class Admin::BodyPartGenresController < ApplicationController
 
   def update
     @body_part_genre = BodyPartGenre.find(params[:id])
-    if @body_part_genre = BodyPartGenre.update(body_part_genre_params)
+
+    if @body_part_genre.update(body_part_genre_params)
+      @body_part_genres = BodyPartGenre.all
       redirect_to admin_body_part_genres_path
       flash[:notice] = "ジャンルを更新しました"
     else

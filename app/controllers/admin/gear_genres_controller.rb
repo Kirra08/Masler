@@ -12,7 +12,8 @@ class Admin::GearGenresController < ApplicationController
 
   def update
     @gear_genre = GearGenre.find(params[:id])
-    if @gear_genre = GearGenre.update(gear_genre_params)
+    if @gear_genre.update(gear_genre_params)
+      @gear_genres = GearGenre.all
       redirect_to admin_body_part_genres_path
     else
       render :edit
