@@ -1,8 +1,9 @@
-
+<% @gear_genres.each do |gear_genre| %>
   <tr>
     <td>
       <%= image_tag gear_genre.gear_genre_icon, size: "20x20" %>
-      　　<%= gear_genre.name %>
+        <%= gear_genre.name %>
     </td>
     <td><%= link_to "ジャンル編集",edit_admin_gear_genre_path(gear_genre) %></td>
   </tr>
+<% end %>

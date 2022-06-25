@@ -58,10 +58,9 @@
             </tr>
 
           </thead>
-          <tbody id="gear_genres"><% @gear_genres.each do |gear_genre| %>
-           <%= render "admin/gear_genres/index", gear_genre: gear_genre %>
-          <% end %></tbody>
-
+          <tbody id="gear_genres">
+           <%= render "admin/gear_genres/index", gear_genres: @gear_genres %>
+          </tbody>
         </table>
       </div>
     </div>

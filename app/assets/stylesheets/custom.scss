@@ -42,10 +42,27 @@
 }
 
 .header_btn:hover {
-  background-color: #3cb371;
+  background-color: #2e8b57;
   border-radius: 15px;
 }
 
-.light_green {
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #2e8b57;/*文字の色を変える*/
+  margin-top: 10px;
+}
+
+.pagination>.active>a {
+  background: #3cb371;
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+.pagination>.active>.page-link{
   background-color: #3cb371;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px; /*角を丸くする*/
+  background-color: #3cb371;
+  color: white;
 }

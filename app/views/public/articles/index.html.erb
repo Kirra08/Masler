@@ -6,6 +6,11 @@
       <% @articles.each do |article| %>
         <%= render "article_index", article: article %>
       <% end %>
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @articles %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

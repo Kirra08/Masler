@@ -2,7 +2,7 @@ class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = Article.all.order(created_at: :desc)
+    @articles = Article.all.order(created_at: :desc).page(params[:page]).per(6)
     @user = current_user
     @body_part_genres = BodyPartGenre.all
     @gear_genres = GearGenre.all
@@ -11,7 +11,7 @@ class Public::ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @article_comment = ArticleComment.new
-    @article_comments = ArticleComment.where(article_id: @article)
+    @article_comments = ArticleComment.where(article_id: @article).page(params[:page]).per(8)
   end
 
   def edit
