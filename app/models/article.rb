@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   belongs_to :gear_genre
   has_many :article_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :calenders
+  has_many :calendars, dependent: :destroy
 
   has_one_attached :article_image
   has_one_attached :article_image2
