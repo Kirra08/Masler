@@ -4,12 +4,12 @@
    <td><%= comment.comment %></td>
    <td>
      <% if comment.user_id == current_user.id %>
-      <%= link_to "編集", edit_article_article_comment_path(article,comment) %>
+      <%= link_to "編集", edit_article_article_comment_path(article,comment), class:"btn light_green btn-sm" %>
      <% end %>
    </td>
    <td>
      <% if comment.user_id == current_user.id %>
-      <%= link_to "削除", article_article_comment_path(article, comment), method: :delete, remote: :true, data: { confirm: "コメントを削除してもよろしいですか？" } %>
+      <%= link_to "削除", article_article_comment_path(article, comment), class: "btn btn-outline-danger btn-sm", method: :delete, remote: :true, data: { confirm: "コメントを削除してもよろしいですか？" } %>
      <% end %>
    </td>
  </tr>

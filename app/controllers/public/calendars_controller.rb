@@ -1,9 +1,19 @@
 class Public::CalendarsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
+    @gear_genres = GearGenre.all
+    @body_part_genres = BodyPartGenre.all
     @calendar = Calendar.new
-    @articles = Article.all
+    if params[:body_part_genre_id] && params[:gear_genre_id].blank?
+      @articles = Article.where(body_part_genre_id: params[:body_part_genre_id])
+    elsif params[:gear_genre_id] && params[:body_part_genre_id].blank?
+      @articles = Article.where(gear_genre_id: params[:gear_genre_id])
+    elsif params[:body_part_genre_id] && params[:gear_genre_id]
+      @articles = Article.where(gear_genre_id: params[:gear_genre_id]).where(body_part_genre_id: params[:body_part_genre_id])
+    else
+      @articles = Article.all
+    end
     @user = User.find(params[:user_id])
     # params[:start_date]が来ているかをチェック（if）
     unless params[:start_date]

@@ -27,7 +27,7 @@
                 <td><%= calender.set %></td>
                 <td><%= calender.start_time.strftime("%Y-%m-%d")%></td>
                 <% if calender.user_id == current_user.id %>
-                  <td><%= link_to "削除", user_calendar_path(current_user,calender), method: :delete, remote: :true,  data: {confirm:"スケジュールを削除してもよろしいですか？"}%></td>
+                  <td><%= link_to "削除", user_calendar_path(current_user,calender), method: :delete, remote: :true, class: "btn btn-outline-danger btn-sm",  data: {confirm:"スケジュールを削除してもよろしいですか？"}%></td>
                 <% end %>
               </tr>
             </tbody>

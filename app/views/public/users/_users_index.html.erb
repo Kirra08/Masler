@@ -1,0 +1,24 @@
+<div class="row border p-2">
+  <div class="col-lg-4">
+    <div style="text-align : center">
+      <%= link_to user_path(user)  do %>
+        <%= image_tag user.get_profile_image(200,150) %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="mt-2"><%= user.name %></div>
+      </div>
+        <div class="col-lg-5" id="follow_btn">
+          <%= render "public/relationships/follow_btn", user: user %>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <%= user.introduction %>
+      </div>
+    </div>
+  </div>
+</div>
