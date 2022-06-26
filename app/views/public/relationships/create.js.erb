@@ -1,2 +1,2 @@
-$('#follow_btn').html("<%= j(render "public/relationships/follow_btn", article: @article, user: @user) %>");
+$('#follow_btn-<%= @user.id %>').html("<%= j(render "public/relationships/follow_btn", article: @article, user: @user) %>");
 $('#follow_list_btn').html("<%= j(render "public/relationships/follow_list_btn",user: @user) %>");
