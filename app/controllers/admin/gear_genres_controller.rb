@@ -15,6 +15,7 @@ class Admin::GearGenresController < ApplicationController
     if @gear_genre.update(gear_genre_params)
       @gear_genres = GearGenre.all
       redirect_to admin_body_part_genres_path
+      flash[:notice] = "ジャンルを更新しました"
     else
       render :edit
     end

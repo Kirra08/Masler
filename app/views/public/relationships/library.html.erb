@@ -2,7 +2,7 @@
   <div class="row">
     <%= render "public/articles/sidebar" %>
     <div class="col-lg-8 md-lg-1">
-      <%= render "public/articles/articles", articles: @articles, text: "ライブラリ"%>
+      <%= render "public/articles/articles", articles: @articles, text: "タイムライン"%>
       <% @articles.each do |article| %>
         <%= render "public/articles/article_index", article: article %>
       <% end %>

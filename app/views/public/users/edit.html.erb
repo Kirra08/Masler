@@ -20,7 +20,7 @@
       <% end %>
       <div class="row">
         <div class="col-lg-9 text-right">
-        <i class="mr-5 mt-4"><%= link_to "退会する", delete_user_path, method: :patch, class: "btn btn-outline-danger col-2", data: {confirm:"本当に退会しますか？"} %></i></div>
+        <i class="mr-5 mt-4"><%= link_to "退会する", user_withdraw_path(@user), method: :patch, class: "btn btn-outline-danger col-2",data: {confirm:"本当に退会しますか？"} %></i></div>
       </div>
     </div>
   </div>

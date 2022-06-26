@@ -23,10 +23,16 @@
       <% end %>
     </div>
 
+    <div class="row">
+      <%= link_to users_path do %>
+        <h4 class="text-dark sidebar d-flex align-items-center ml-2" style="height: 50px">　<i class="far fa-user"></i><i class="text-secondary">　ユーザー一覧　</i></h4>
+      <% end %>
+    </div>
+
 
     <div class="row">
       <%= link_to user_path(current_user) do %>
-        <h4 class="text-dark sidebar d-flex align-items-center ml-2" style="height: 50px">　<i class="far fa-user"></i><i class="text-secondary">　プロフィール　</i></h4>
+        <h4 class="text-dark sidebar d-flex align-items-center ml-2" style="height: 50px">　<i class="far fa-user-circle"></i><i class="text-secondary">　プロフィール　</i></h4>
       <% end %>
     </div>
 

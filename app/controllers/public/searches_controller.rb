@@ -20,4 +20,8 @@ class Public::SearchesController < ApplicationController
       @articles = Article.all.order(created_at: :desc).page(params[:page]).per(6)
     end
   end
+
+  def users_search
+    @users = User.looks(params[:search], params[:word]).page(params[:page]).per(6)
+  end
 end

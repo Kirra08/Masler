@@ -30,6 +30,8 @@ class Public::ArticleCommentsController < ApplicationController
   def update
     @article_comment = ArticleComment.find(params[:id])
     @article_comment.update(article_comments_params)
+    @article = Article.find(params[:article_id])
+    flash[:notice] = "コメントを編集しました"
     redirect_to article_path(@article)
   end
 

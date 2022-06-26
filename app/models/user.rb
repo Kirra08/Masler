@@ -39,6 +39,16 @@ class User < ApplicationRecord
     end
   end
 
+  def User.looks(search, word)
+    if search == "完全一致"
+      @User = User.where("name LIKE?", "#{word}")
+    elsif search == "曖昧検索"
+      @User = User.where("name LIKE?", "%#{word}%")
+    else
+      @User = User.all
+    end
+  end
+
 
   def get_profile_image(width, height)
     unless profile_image.attached?

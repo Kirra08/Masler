@@ -2,9 +2,9 @@
   <div class="row">
     <%= render "public/articles/sidebar" %>
     <div class="col-lg-8 md-lg-1">
-      <%= render "public/users/user_profile", user: @user %>
+      <%= render "public/users/users", text: "検索結果" %>
       <% @users.each do |user| %>
-        <%= render "public/users/users_index", user: user %>
+        <%= render "public/relationships/follow_list", user: user %>
       <% end %>
     </div>
   </div>

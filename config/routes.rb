@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       get "library" => "relationships#library", as: "library"
+      patch 'users/withdraw', as: 'withdraw'
       resources :calendars, only: [:index, :create, :destroy]
     end
 
@@ -32,8 +33,8 @@ Rails.application.routes.draw do
     end
     get 'index' => 'favorites#index', as: 'favorite_index'
     get 'search' => 'searches#search'
-    patch 'user/delete_user', as: 'delete_user'
     get "genre_search" => "searches#genre_search"
+    get "users_search" => "searches#users_search"
   end
 
   namespace :admin do
@@ -44,8 +45,9 @@ Rails.application.routes.draw do
     resources :articles,  only: [:index, :show, :destroy] do
       resources :article_comments, only: [:destroy]
     end
-    resources :users, only: [:index, :show]
-    patch 'user/delete_user', as: 'delete_user'
+    resources :users, only: [:index, :show] do
+      patch 'users/withdraw', as: 'withdraw'
+    end
   end
 
 

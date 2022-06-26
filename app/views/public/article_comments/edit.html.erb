@@ -1,16 +1,18 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8">
-      <%= form_with model: @article_comment, url: article_article_comments_path(@article) do |f| %>
-        <%= f.label :タイトル %>
-        <%= f.text_field :title %>
-        <%= f.label :本文 %>
-        <%= f.text_area :comment %>
-        <%= f.hidden_field :article_id, :value => @article.id %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.submit "投稿" %>
+      <div class="col-lg-8 text-center ml-5 mb-3">
+      <h3>コメント編集</h3>
+    </div>
+  <div class="row mx-auto">
+    <div class="col-lg-8 text-center mx-auto">
+      <%= form_with model: @article_comment, url: article_article_comment_path(@article, @article_comment) do |f| %>
+          <div class="form-group">
+            <label class="mr-5"><%= f.label :コメント %></label>
+              <%= f.text_area :comment, placeholder: "コメントを入力してください", size: "40x1" %>
+            </div>
+            <%= f.hidden_field :article_id, :value => @article.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <div class="text-center"><%= f.submit "コメント編集" , class: "btn light_green btn-sm mb-2"%></div>
       <% end %>
-      <%= link_to "コメント削除", article_article_comment_path(@article, @article_comment), method: :delete %>
     </div>
   </div>
 </div>
