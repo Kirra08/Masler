@@ -1,5 +1,6 @@
 $('#comments').html("<%= j(render "public/article_comments/comment_index", article_comments: @article_comments, article: @article) %>");
 $('#flash-message').html('<%= j(render "layouts/flash_message") %>');
+$('#comments_count').html("<%= j(render 'public/article_comments/comments_count', article: @article) %>");
 
 function sleep(msec) {
    return new Promise(function(resolve) {

@@ -5,14 +5,15 @@ class Public::CalendarsController < ApplicationController
     @gear_genres = GearGenre.all
     @body_part_genres = BodyPartGenre.all
     @calendar = Calendar.new
-    if params[:body_part_genre_id] && params[:gear_genre_id].blank?
-      @articles = Article.where(body_part_genre_id: params[:body_part_genre_id])
+    if params[:gear_genre_id].blank? && params[:body_part_genre_id].blank?
+      @articles = Article.all
     elsif params[:gear_genre_id] && params[:body_part_genre_id].blank?
       @articles = Article.where(gear_genre_id: params[:gear_genre_id])
-    elsif params[:body_part_genre_id] && params[:gear_genre_id]
+    elsif params[:body_part_genre_id] && params[:gear_genre_id].blank?
+      @articles = Article.where(body_part_genre_id: params[:body_part_genre_id])
+    elsif
+      params[:body_part_genre_id].present? && params[:gear_genre_id].present?
       @articles = Article.where(gear_genre_id: params[:gear_genre_id]).where(body_part_genre_id: params[:body_part_genre_id])
-    else
-      @articles = Article.all
     end
     @user = User.find(params[:user_id])
     # params[:start_date]が来ているかをチェック（if）
