@@ -22,10 +22,8 @@
     <% else %>
       <i class="ml-5"><%= article.favorites.count %>:♥</i>
     <% end %>
-    <i class="ml-5">
-      <%= link_to article_path(article) do %>
-        <%= article.article_comments.count %>💬
-      <% end %>
+    <i id="comments_count">
+      <%= render "public/article_comments/comments_count", article: article %>
     </i>
     </div>
   </div>

@@ -57,10 +57,10 @@
           <%= render "layouts/error_messages", model: @article_comment %>
         </div>
         <div class="row">
-          <%= form_with model: @article_comment, url: article_article_comments_path(@article), method: :post, class: "jsform", local: false do |f| %>
+          <%= form_with model: @article_comment, url: article_article_comments_path(@article), method: :post, local: false do |f| %>
           <div class="form-group">
             <label class="mr-5"><%= f.label :コメント %></label>
-              <%= f.text_area :comment, placeholder: "コメントを入力してください", size: "40x1" %>
+              <%= f.text_area :comment, placeholder: "コメントを入力してください", size: "40x1", class:"text_area" %>
             </div>
             <%= f.hidden_field :article_id, :value => @article.id %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
