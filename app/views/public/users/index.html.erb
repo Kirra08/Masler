@@ -4,9 +4,7 @@
     <div class="col-lg-8 md-lg-1">
       <%= render "users", text: "ユーザー一覧" %>
       <% @users.each do |user| %>
-        <% unless user == current_user %>
           <%= render "public/users/users_index", user: user %>
-        <% end %>
       <% end %>
     </div>
   </div>
