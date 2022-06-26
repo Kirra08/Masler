@@ -19,7 +19,7 @@
       </div>
     </div>
     <% else %>
-      <div class="col-lg-4" id="follow_btn">
+      <div class="col-lg-4" id="follow_btn-<%= @user.id %>">
         <%= render "public/relationships/follow_btn", user: user %>
       </div>
   <% end %>

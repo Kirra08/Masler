@@ -11,7 +11,7 @@
       <div class="col-lg-7">
         <div class="mt-2"><%= user.name %></div>
       </div>
-        <div class="col-lg-5" id="follow_btn">
+        <div class="col-lg-5" id="follow_btn-<%= user.id %>">
           <%= render "public/relationships/follow_btn", user: user %>
         </div>
     </div>
