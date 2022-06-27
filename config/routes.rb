@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :users, only: [:index, :show, :edit, :update] do
-      resource :relationships, only: [:create, :destroy]
+      resources :relationships, except: %i[index new create edit update show destroy] do
+        member do
+          post :follow
+          delete :unfollow
+        end
+      end
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       get "library" => "relationships#library", as: "library"

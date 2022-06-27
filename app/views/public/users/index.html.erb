@@ -4,7 +4,10 @@
     <div class="col-lg-8 md-lg-1">
       <%= render "users", text: "ユーザー一覧" %>
       <% @users.each do |user| %>
+        <% unless user == current_user %>
           <%= render "public/users/users_index", user: user %>
+        <% end %>
+          <%= render "public/users/users_index", profile_id: current_user.id, user: user %>
       <% end %>
     </div>
   </div>
