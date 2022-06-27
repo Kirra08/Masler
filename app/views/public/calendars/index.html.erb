@@ -8,8 +8,8 @@
           <div class="calendar_bg mt-5">
             <%= form_with url: user_calendars_path(@user), method: :get, class: "jsform", local: false do |f| %>
               <span class="pl-5 ml-4"><%= f.label :トレーニング %></span>
-              <span class="pl-4 ml-2"><%= f.collection_select :gear_genre_id, @gear_genres, :id, :name, prompt: "--選択してください--" %></span>
-              <span class="pl-4 ml-2"><%= f.collection_select :body_part_genre_id, @body_part_genres, :id, :name, prompt: "--選択してください--" %></span>
+              <span class="pl-4 ml-2"><%= f.collection_select :gear_genre_id, @gear_genres, :id, :name, prompt: "-------使用器具-------" %></span>
+              <span class="pl-4 ml-2"><%= f.collection_select :body_part_genre_id, @body_part_genres, :id, :name, prompt: "--トレーニング部位--" %></span>
               <div class="text-center ml-1 mt-3"><%= f.submit "ジャンルで絞り込み", class:"btn light_green" %></div>
             <% end %>
             <div id="form">

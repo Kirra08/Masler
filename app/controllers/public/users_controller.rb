@@ -18,14 +18,16 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "ほかのユーザーのプロフィール編集はできません"
     end
     if @user.name == "guestuser"
-      redirect_to user_path(current_user)
-      flash[:notice] = 'ゲストユーザーはプロフィール編集画面へ遷移できません'
+      flash.now[:notice] = 'ゲストユーザーはプロフィール編集画面へ遷移できません'
+      render :show
     end
   end
 
   def update
-    current_user.update(user_params)
-    redirect_to articles_path
+    if current_user.update(user_params)
+      flash[:notice] = "プロフィールを編集しました"
+      redirect_to user_path(current_user)
+    end
   end
 
   def withdraw
