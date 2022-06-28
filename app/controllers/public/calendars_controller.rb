@@ -5,6 +5,8 @@ class Public::CalendarsController < ApplicationController
     @gear_genres = GearGenre.all
     @body_part_genres = BodyPartGenre.all
     @calendar = Calendar.new
+    # @articlesをソートする
+    # @articlesの中に入っているarticleに紐づけられた２つのジャンルでソートする
     if params[:gear_genre_id].blank? && params[:body_part_genre_id].blank?
       @articles = Article.all
     elsif params[:gear_genre_id] && params[:body_part_genre_id].blank?
@@ -17,6 +19,7 @@ class Public::CalendarsController < ApplicationController
     end
     @user = User.find(params[:user_id])
     # params[:start_date]が来ているかをチェック（if）
+    # 送られて来たparamsで月ごとのcalendarを抽出する
     unless params[:start_date]
       now_date = Time.zone.now.strftime("%Y-%m")
       @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc").page(params[:page]).per(8)
@@ -35,6 +38,7 @@ class Public::CalendarsController < ApplicationController
       @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc")
       flash[:notice] = "スケジュールを投稿しました"
     else
+      # エラーメッセージが表示されたときに今月のカレンダーを表示する
       now_date = Time.zone.now.strftime("%Y-%m")
       @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc").page(params[:page]).per(8)
     end

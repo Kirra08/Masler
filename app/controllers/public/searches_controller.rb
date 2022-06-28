@@ -6,6 +6,7 @@ class Public::SearchesController < ApplicationController
   end
 
   def genre_search
+    # 投稿に紐づけられたジャンル２つで検索
     @user = current_user
     @body_part_genres = BodyPartGenre.all
     @gear_genres = GearGenre.all
