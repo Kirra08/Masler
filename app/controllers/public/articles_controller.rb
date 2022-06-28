@@ -45,7 +45,7 @@ class Public::ArticlesController < ApplicationController
     @body_part_genres = BodyPartGenre.all
     if @article.save
       flash[:notice] = "投稿しました"
-      redirect_to articles_path
+      redirect_to article_path(@article)
     else
       render :new
     end

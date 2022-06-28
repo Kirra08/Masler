@@ -34,6 +34,9 @@ class Public::CalendarsController < ApplicationController
       now_date = Time.zone.now.strftime("%Y-%m")
       @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc")
       flash[:notice] = "スケジュールを投稿しました"
+    else
+      now_date = Time.zone.now.strftime("%Y-%m")
+      @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc").page(params[:page]).per(8)
     end
   end
 

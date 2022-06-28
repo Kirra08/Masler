@@ -13,11 +13,11 @@
       <%= form_with model: @body_part_genre, url: admin_body_part_genres_path, method: :post, local: false do |f| %>
        <div class="form-group">
          <%= f.label :トレーニング部位 %>
-         <%= f.text_field :name  %>
+         <%= f.text_field :name , class:"text_field" %>
        </div>
        <div class="form-group">
          <%= f.label :ジャンルアイコン %>
-         <%= f.file_field :body_part_icon  %>
+         <%= f.file_field :body_part_icon, class:"file_field"  %>
        </div>
        <div class="text-center mr-5 pr-5"><%= f.submit "ジャンル作成", class:"btn light_green btn-sm" %></div>
       <% end %>
@@ -40,11 +40,11 @@
       <%= form_with model: @gear_genre, url: admin_gear_genres_path, method: :post, local: false do |f| %>
         <div class="form-group">
           <i class="mr-5"><%= f.label :使用器具名 %></i>
-          <%= f.text_field :name  %>
+          <%= f.text_field :name, class:"text_field"  %>
         </div>
         <div class="form-group">
           <%= f.label :ジャンルアイコン %>
-          <%= f.file_field :gear_genre_icon  %>
+          <%= f.file_field :gear_genre_icon, class:"file_field"  %>
         </div>
         <div class="text-center mr-5 pr-5 "><%= f.submit "ジャンル作成", class:"btn light_green btn-sm"%></div>
       <% end %>
