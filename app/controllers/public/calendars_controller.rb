@@ -19,7 +19,7 @@ class Public::CalendarsController < ApplicationController
     end
     @user = User.find(params[:user_id])
     # params[:start_date]が来ているかをチェック（if）
-    # 送られて来たparamsで月ごとのcalendarを抽出する
+    # 送られて来たparamsで月ごとのcalendarを抽出
     unless params[:start_date]
       now_date = Time.zone.now.strftime("%Y-%m")
       @calendars = Calendar.where(user_id: params[:user_id]).where("start_time LIKE?", "%#{now_date}%").order(start_time: "desc").page(params[:page]).per(8)
