@@ -23,6 +23,7 @@ class Public::SearchesController < ApplicationController
   end
 
   def users_search
-    @users = User.looks(params[:search], params[:word]).page(params[:page]).per(6)
+    #ユーザー検索後ユーザー一覧
+    @users = User.looks(params[:search], params[:word]).page(params[:page]).per(6).where(is_deleted: false)
   end
 end
